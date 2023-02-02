@@ -3,18 +3,38 @@ import java.util.Scanner;
 // BEGIN REVEL SUBMISSION
 public class Exercise13_19 {
     public static void main(String[] args) {
-        // Write your code
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a decimal number: ");
-        double decimalNumber = Double.parseDouble(input.next());
+        String decimalString = input.next();
+        char sign = decimalString.charAt(0);
+        int indexOfDecimalPoint = decimalString.indexOf(".");
+        if (indexOfDecimalPoint == -1) {
+            System.out.println("Incorrect input");
+            System.exit(1);
+        }
         // Get integer part
+        String integerString = decimalString.substring(0, indexOfDecimalPoint);
 
         // Get fractional part
+        String fractionalString = decimalString.substring(indexOfDecimalPoint + 1);
 
-        // Get Rational version of it
+        // Get Rational version of each
+        Rational integerRational = new Rational(Long.parseLong(integerString), 1);
+        Rational fractionalRational = new Rational(
+                Long.parseLong(fractionalString),
+                (long) Math.pow(10, fractionalString.length())
+        );
+
+        // Add them together (add method automatically creates new Rational which simplifies)
+        Rational resultRational = integerRational.add(fractionalRational);
+
+        // Applies sign
+        if (sign == '-') {
+            resultRational = resultRational.multiply(new Rational(-1, 1));
+        }
 
         // Print output
-        System.out.printf("The fraction number is %s\n", "");
+        System.out.printf("The fraction number is %s\n", resultRational.toString());
     }
 }
 // END REVEL SUBMISSION
