@@ -4,6 +4,17 @@ import java.util.Scanner;
 public class Exercise13_19 {
     public static void main(String[] args) {
         // Write your code
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        double decimalNumber = Double.parseDouble(input.next());
+        // Get integer part
+
+        // Get fractional part
+
+        // Get Rational version of it
+
+        // Print output
+        System.out.printf("The fraction number is %s\n", "");
     }
 }
 // END REVEL SUBMISSION
